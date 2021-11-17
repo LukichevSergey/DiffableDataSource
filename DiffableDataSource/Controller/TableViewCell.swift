@@ -10,20 +10,8 @@ import SnapKit
 
 class TableViewCell: UITableViewCell {
     
-    lazy var sign: UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 35)
-        return label
-    }()
-    
-    lazy var value: UILabel = {
-        let label = UILabel()
-        label.adjustsFontSizeToFitWidth = true
-        label.font = .systemFont(ofSize: 35)
-        return label
-    }()
-
+    lazy var sign: UILabel  = createLabel()
+    lazy var value: UILabel = createLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -50,5 +38,11 @@ class TableViewCell: UITableViewCell {
         self.sign.text = model.sign
         self.value.text = "\(model.value)"
     }
-
+    
+    private func createLabel() -> UILabel {
+        let label = UILabel()
+        label.adjustsFontSizeToFitWidth = true
+        label.font = .systemFont(ofSize: 35)
+        return label
+    }
 }
