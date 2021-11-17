@@ -12,13 +12,17 @@ class ViewController: UIViewController {
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.rowHeight = 100
         return tableView
     }()
     
-    private lazy var dataSource = UITableViewDiffableDataSource<Section, Data>(tableView: tableView) { tableView, indexPath, itemIdentifier in
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = "\(itemIdentifier.value)"
+    private lazy var dataSource = UITableViewDiffableDataSource<Section, Data>(tableView: tableView) { tableView, indexPath, item in
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+            return UITableViewCell(style: .default, reuseIdentifier: nil)
+        }
+
+        cell.configure(withItemModel: item)
         return cell
     }
     
@@ -32,13 +36,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate   = self
-        tableView.dataSource = dataSource
-        
-        self.view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.right.left.top.bottom.equalTo(self.view)
-        }
+        configureTableView()
 
         updateTable(from: data)
     }
@@ -49,11 +47,23 @@ class ViewController: UIViewController {
         snapshot.appendItems(data)
         dataSource.apply(snapshot, animatingDifferences: false, completion: nil)
     }
-
-
+    
+    private func configureTableView() {
+        setTableViewDelegates()
+        
+        self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.right.left.top.bottom.equalTo(self.view)
+        }
+    }
+    
+    private func setTableViewDelegates() {
+        tableView.delegate   = self
+        tableView.dataSource = dataSource
+    }
 }
 
 extension ViewController: UITableViewDelegate {
-    
+
 }
 

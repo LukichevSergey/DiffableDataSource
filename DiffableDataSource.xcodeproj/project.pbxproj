@@ -16,6 +16,7 @@
 		8773160627448E8400AEA498 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8773160527448E8400AEA498 /* SnapKit */; };
 		87731608274491AB00AEA498 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87731607274491AB00AEA498 /* Data.swift */; };
 		8773160A274491C800AEA498 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87731609274491C800AEA498 /* Section.swift */; };
+		877316112744936100AEA498 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877316102744936100AEA498 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		877315FE27447F7C00AEA498 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87731607274491AB00AEA498 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		87731609274491C800AEA498 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		877316102744936100AEA498 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,17 +64,58 @@
 		877315EF27447F7C00AEA498 /* DiffableDataSource */ = {
 			isa = PBXGroup;
 			children = (
-				877315F027447F7C00AEA498 /* AppDelegate.swift */,
-				877315F227447F7C00AEA498 /* SceneDelegate.swift */,
-				877315F427447F7C00AEA498 /* ViewController.swift */,
-				877315F627447F7C00AEA498 /* Main.storyboard */,
-				877315F927447F7C00AEA498 /* Assets.xcassets */,
-				877315FB27447F7C00AEA498 /* LaunchScreen.storyboard */,
-				877315FE27447F7C00AEA498 /* Info.plist */,
+				8773160B274492A100AEA498 /* Model */,
+				8773160D274492B700AEA498 /* View */,
+				8773160C274492A900AEA498 /* Controller */,
+				8773160E274492D200AEA498 /* Delegate */,
+				8773160F274492DE00AEA498 /* Supporting Files */,
+			);
+			path = DiffableDataSource;
+			sourceTree = "<group>";
+		};
+		8773160B274492A100AEA498 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				87731607274491AB00AEA498 /* Data.swift */,
 				87731609274491C800AEA498 /* Section.swift */,
 			);
-			path = DiffableDataSource;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8773160C274492A900AEA498 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				877315F427447F7C00AEA498 /* ViewController.swift */,
+				877316102744936100AEA498 /* TableViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8773160D274492B700AEA498 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				877315F627447F7C00AEA498 /* Main.storyboard */,
+				877315FB27447F7C00AEA498 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8773160E274492D200AEA498 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				877315F027447F7C00AEA498 /* AppDelegate.swift */,
+				877315F227447F7C00AEA498 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		8773160F274492DE00AEA498 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				877315F927447F7C00AEA498 /* Assets.xcassets */,
+				877315FE27447F7C00AEA498 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,6 +198,7 @@
 				8773160A274491C800AEA498 /* Section.swift in Sources */,
 				877315F527447F7C00AEA498 /* ViewController.swift in Sources */,
 				877315F127447F7C00AEA498 /* AppDelegate.swift in Sources */,
+				877316112744936100AEA498 /* TableViewCell.swift in Sources */,
 				877315F327447F7C00AEA498 /* SceneDelegate.swift in Sources */,
 				87731608274491AB00AEA498 /* Data.swift in Sources */,
 			);
@@ -307,7 +351,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 22LGB8B8B3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DiffableDataSource/Info.plist;
+				INFOPLIST_FILE = "DiffableDataSource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -335,7 +379,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 22LGB8B8B3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DiffableDataSource/Info.plist;
+				INFOPLIST_FILE = "DiffableDataSource/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
