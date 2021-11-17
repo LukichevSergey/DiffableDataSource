@@ -26,17 +26,14 @@ class ViewController: UIViewController {
         return cell
     }
     
-    private let data: [Data] = [
-        Data(sign: "+", value: 100),
-        Data(sign: "-", value: 200),
-        Data(sign: "*", value: 300),
-        Data(sign: "/", value: 400)
-    ]
+    private var data: [Data] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureTableView()
+        
+        self.data = fetchData()
 
         updateTable(from: data)
     }
@@ -64,6 +61,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UITableViewDelegate {
-
+    private func fetchData() -> [Data] {
+        var data: [Data] = []
+        data.append(Data(sign: "+", value: 100))
+        data.append(Data(sign: "-", value: 200))
+        data.append(Data(sign: "/", value: 300))
+        data.append(Data(sign: "*", value: 400))
+        return data
+    }
 }
 
