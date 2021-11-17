@@ -10,17 +10,16 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    static let reuseIdentifier = "cell"
-    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: ViewController.reuseIdentifier)
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: TableViewCell.reuseIdentifier)
+
         tableView.rowHeight = 100
         return tableView
     }()
     
     private lazy var dataSource = UITableViewDiffableDataSource<Section, Data>(tableView: tableView) { tableView, indexPath, item in
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.reuseIdentifier, for: indexPath) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseIdentifier, for: indexPath) as? TableViewCell else {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
         }
 
@@ -35,7 +34,7 @@ class ViewController: UIViewController {
         
         configureTableView()
         
-        self.data = fetchData()
+        self.data = Data.fetchData()
 
         updateTable(from: data)
     }
@@ -48,28 +47,16 @@ class ViewController: UIViewController {
     }
     
     private func configureTableView() {
-        setTableViewDelegates()
-        
+        tableView.delegate   = self
+        tableView.dataSource = dataSource
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.right.left.top.bottom.equalTo(self.view)
         }
     }
-    
-    private func setTableViewDelegates() {
-        tableView.delegate   = self
-        tableView.dataSource = dataSource
-    }
 }
 
 extension ViewController: UITableViewDelegate {
-    private func fetchData() -> [Data] {
-        var data: [Data] = []
-        data.append(Data(sign: "+", value: 100))
-        data.append(Data(sign: "-", value: 200))
-        data.append(Data(sign: "/", value: 300))
-        data.append(Data(sign: "*", value: 400))
-        return data
-    }
+
 }
 

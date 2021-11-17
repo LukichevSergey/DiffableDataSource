@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum Section {
+enum Section: CaseIterable {
     case first
 }

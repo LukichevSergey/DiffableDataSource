@@ -10,8 +10,10 @@ import SnapKit
 
 class TableViewCell: UITableViewCell {
     
-    lazy var sign: UILabel  = createLabel()
+    lazy var sign:  UILabel = createLabel()
     lazy var value: UILabel = createLabel()
+    
+    static let reuseIdentifier = "cell"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
