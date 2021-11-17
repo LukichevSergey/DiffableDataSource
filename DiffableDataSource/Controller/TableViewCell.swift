@@ -15,7 +15,15 @@ class TableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        commonInit()
+    }
+    
+    private func commonInit() {
         addSubview(value)
         value.snp.makeConstraints { make in
             make.right.equalTo(self.snp.right).inset(16)
@@ -27,11 +35,6 @@ class TableViewCell: UITableViewCell {
             make.right.equalTo(value.snp.left).inset(-16)
             make.centerY.equalTo(self.snp.centerY)
         }
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
     }
     
     func configure(withItemModel model: Data) {

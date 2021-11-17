@@ -10,15 +10,17 @@ import SnapKit
 
 class ViewController: UIViewController {
     
+    static let reuseIdentifier = "cell"
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: ViewController.reuseIdentifier)
         tableView.rowHeight = 100
         return tableView
     }()
     
     private lazy var dataSource = UITableViewDiffableDataSource<Section, Data>(tableView: tableView) { tableView, indexPath, item in
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ViewController.reuseIdentifier, for: indexPath) as? TableViewCell else {
             return UITableViewCell(style: .default, reuseIdentifier: nil)
         }
 
